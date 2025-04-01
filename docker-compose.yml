@@ -1,0 +1,12 @@
+services:
+  neovim-docker:
+    container_name: neovim-docker
+    image: neovim-docker:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /edit
+    environment:
+      NVIM_DISTRO: "${NVIM_DISTRO:-kickstart}"
+    volumes:
+      - ./configs/${NVIM_DISTRO:-kickstart}:/root
